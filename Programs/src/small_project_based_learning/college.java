@@ -21,7 +21,7 @@ abstract class CollegeMember {
         return name;
     }
 
-    public void seName(String name) {
+    public void setName(String name) {
 
         this.name = name;
     }
@@ -68,11 +68,16 @@ class Student extends CollegeMember {
         return major;
     }
 
-    public double getGPA() {
-        if (gpa >= 0.0 && gpa <= 4.0) {
-            return gpa;
-        }
+    public double getGpa() {
         return gpa;
+    }
+
+    public void setGpa(double gpa) {
+        if (gpa >= 0.0 && gpa <= 4.0) {
+            this.gpa = gpa;
+        } else {
+            System.out.println("Invalid GPA.");
+        }
     }
 
     @Override
@@ -82,10 +87,57 @@ class Student extends CollegeMember {
     }
 }
 
+class Professor extends CollegeMember {
+    private String department;
+    private double salary;
+
+    Professor(String Id, String name, String email, String department, double salary) {
+        super(Id, name, email);
+        this.department = department;
+        this.salary = salary;
+    }
+
+    public String getDepartment() {
+        return department;
+    }
+
+    public double getSalary() {
+        return salary;
+    }
+
+    public void setSalary(double salary) {
+        if (salary > 0.0) {
+            this.salary = salary;
+        } else {
+            System.out.println("Invalid salary");
+        }
+
+    }
+
+    @Override
+    public String getRole() {
+        return "Professor";
+    }
+
+    @Override
+    public void displayInfo() {
+        super.displayInfo();
+        System.out.println("Department : " + department);
+        System.out.println("Salary     : " + salary);
+        System.out.println("------------------");
+    }
+
+}
+
 public class college {
 
     public static void main(String[] args) {
-        System.out.println("shk");
+        Student s1 = new Student("S001", "Alice", "alice@gmail.com", "Computer Science", 3.8);
+        s1.displayInfo();
+
+        // s1.setGpa(5.5);
+        // s1.setGpa(3.2);
+
     }
 
 }
