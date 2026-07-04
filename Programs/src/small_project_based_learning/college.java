@@ -1,5 +1,17 @@
 package small_project_based_learning;
 
+public class college {
+
+    public static void main(String[] args) {
+        Student s1 = new Student("S001", "Alice", "alice@gmail.com", "Computer Science", 3.8);
+        s1.displayInfo();
+
+        // s1.setGpa(5.5);
+        // s1.setGpa(3.2);
+
+    }
+}
+
 abstract class CollegeMember {
     private String Id;
     protected String name;
@@ -12,22 +24,18 @@ abstract class CollegeMember {
     }
 
     public String getId() {
-
         return Id;
     }
 
     public String getName() {
-
         return name;
     }
 
     public void setName(String name) {
-
         this.name = name;
     }
 
     public String getEmail() {
-
         return email;
     }
 
@@ -64,7 +72,6 @@ class Student extends CollegeMember {
     }
 
     public String getMajor() {
-
         return major;
     }
 
@@ -82,7 +89,6 @@ class Student extends CollegeMember {
 
     @Override
     public String getRole() {
-
         return "Student";
     }
 }
@@ -125,19 +131,6 @@ class Professor extends CollegeMember {
         System.out.println("Department : " + department);
         System.out.println("Salary     : " + salary);
         System.out.println("------------------");
-    }
-
-}
-
-public class college {
-
-    public static void main(String[] args) {
-        Student s1 = new Student("S001", "Alice", "alice@gmail.com", "Computer Science", 3.8);
-        s1.displayInfo();
-
-        // s1.setGpa(5.5);
-        // s1.setGpa(3.2);
-
     }
 
 }
