@@ -1,26 +1,57 @@
 package basic_problems;
 
+import java.util.Collections;
 import java.util.ArrayList;
 import java.util.List;
 
 public class practice_ArrayList {
 
-  // METHOD OD PROBLEM-5
-  public static List<Integer> findDupes(List<Integer> input) {
+  // METHOD OF PROBLEM-5
+  /*
+   * public static List<Integer> findDupes(List<Integer> input) {
+   * 
+   * List<Integer> result = new ArrayList<Integer>();
+   * 
+   * for (int i = 0; i < input.size(); i++) {
+   * int count = 0;
+   * for (int j = 0; j < input.size(); j++) {
+   * if (input.get(i).equals(input.get(j))) {
+   * count++;
+   * }
+   * }
+   * if (count > 1 && !result.contains(input.get(i))) {
+   * result.add(input.get(i));
+   * }
+   * }
+   * return result;
+   * }
+   */
 
-    List<Integer> result = new ArrayList<Integer>();
+  // METHOD OF PROBLEM-6
+  public static List<Integer> mergeAndFilter(List<Integer> list1, List<Integer> list2) {
 
-    for (int i = 0; i < input.size(); i++) {
-      int count = 0;
-      for (int j = 0; j < input.size(); j++) {
-        if (input.get(i).equals(input.get(j))) {
-          count++;
-        }
-      }
-      if (count > 1 && !result.contains(input.get(i))) {
-        result.add(input.get(i));
+    List<Integer> common = new ArrayList<>();
+    for (int i = 0; i < list1.size(); i++) {
+      if (list2.contains(list1.get(i))) {
+        common.add(list1.get(i));
       }
     }
+
+    List<Integer> merged = new ArrayList<>();
+    for (int i = 0; i < list1.size(); i++) {
+      merged.add(list1.get(i));
+    }
+    for (int i = 0; i < list2.size(); i++) {
+      merged.add(list2.get(i));
+    }
+
+    List<Integer> result = new ArrayList<>();
+    for (int i = 0; i < merged.size(); i++) {
+      if(!common.contains(merged.get(i))){
+        result.add(merged.get(i));
+      }
+    }
+    Collections.sort(result);
     return result;
   }
 
@@ -85,8 +116,17 @@ public class practice_ArrayList {
     // the elements that appear more than once. Each duplicate value should appear
     // only once in your result. Order does not matter.
 
-    List<Integer> input = new ArrayList<>(List.of(1, 3, 4, 3, 2, 1, 5));
-    System.out.println(findDupes(input));
+    // List<Integer> input = new ArrayList<>(List.of(1, 3, 4, 3, 2, 1, 5));
+    // System.out.println(findDupes(input));
+
+    //PROBLEM-6: You are given two separate List<Integer> objects. Write a method that merges them into a single list, removes any element that appears in both lists (i.e., the common elements), and returns the remaining elements sorted in ascending order.
+    List<Integer> list1 = new ArrayList<>(List.of(4,7,2,9));
+    List<Integer> list2 = new ArrayList<>(List.of(3,7,5,2));
+
+    List<Integer> result = new ArrayList<>(mergeAndFilter(list1, list2));   
+    System.out.println("Result: "+result); 
+
+
 
   }
 }
