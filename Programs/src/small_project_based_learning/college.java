@@ -5,7 +5,8 @@ import java.util.ArrayList;
 public class college {
 
     public static void main(String[] args) {
-        // Student s1 = new Student("S001", "Alice", "alice@gmail.com", "Computer Science", 3.8);
+        // Student s1 = new Student("S001", "Alice", "alice@gmail.com", "Computer
+        // Science", 3.8);
         // s1.displayInfo();
 
         // s1.setGpa(5.5);
@@ -16,11 +17,16 @@ public class college {
         member.add(new Student("S0001", "Hitesh", "hitesh@gmail.com", "CSE", 7.9));
         member.add(new Student("S0002", "Dinesh", "Dinesh@gmail.com", "ME", 8.6));
 
-        member.add(new Professor("P0001", "Harry", "harry@gmail.com", "CSE", 90000));
-        member.add(new Professor("P0002", "George", "george@gmail.com", "ME", 200000));
+        member.add(new Professor("P0001", "Harry", "harry@gmail.com", "CSE", 900000));
+        member.add(new Professor("P0002", "George", "george@gmail.com", "ME", 700000));
 
-        for(CollegeMember m:member){
+        for (CollegeMember m : member) {
             m.displayInfo();
+        }
+
+        System.out.println("=== Monthly Pay Report ===");
+        for (CollegeMember m : member) {
+            System.out.println(m.getName() + " (" + m.getRole() + ") " + m.calculateMonthlyPay());
         }
     }
 }
@@ -61,6 +67,8 @@ abstract class CollegeMember {
     }
 
     public abstract String getRole();
+
+    public abstract double calculateMonthlyPay();
 
     public void displayInfo() {
         System.out.println("------------------");
@@ -104,6 +112,12 @@ class Student extends CollegeMember {
     public String getRole() {
         return "Student";
     }
+
+    @Override
+    public double calculateMonthlyPay() {
+        return 1500.0;
+    }
+
 }
 
 class Professor extends CollegeMember {
@@ -144,6 +158,11 @@ class Professor extends CollegeMember {
         System.out.println("Department : " + department);
         System.out.println("Salary     : " + salary);
         System.out.println("------------------");
+    }
+
+    @Override
+    public double calculateMonthlyPay() {
+        return salary / 12;
     }
 
 }
