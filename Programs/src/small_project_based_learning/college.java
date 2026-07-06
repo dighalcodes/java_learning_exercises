@@ -28,6 +28,10 @@ public class college {
         for (CollegeMember m : member) {
             System.out.println(m.getName() + " (" + m.getRole() + ") " + m.calculateMonthlyPay());
         }
+        for (CollegeMember m : member) {
+            m.printPayInfo();
+            m.printPayInfo("INR");
+        }
     }
 }
 
@@ -79,6 +83,14 @@ abstract class CollegeMember {
         System.out.println("Role  : " + getRole());
 
         System.out.println("------------------");
+    }
+
+    public void printPayInfo() {
+        System.out.println("Name: " + name + " " + calculateMonthlyPay());
+    }
+
+    public void printPayInfo(String currency) {
+        System.out.println("Name: " + name + " " + currency + " " + calculateMonthlyPay());
     }
 }
 
